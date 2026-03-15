@@ -1,9 +1,11 @@
 services:
   keycloak-server:
     image: quay.io/keycloak/keycloak:latest
-    command: start-dev
+    command: start-dev --http-enabled=true --hostname-strict=false
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin_password
     ports:
       - "8080:8080"
+    volumes:
+      - ./keycloak_data:/opt/keycloak/data:Z

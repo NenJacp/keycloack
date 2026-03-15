@@ -2,6 +2,32 @@
 
 Este documento describe el proceso seguido para configurar la autenticación, el MFA y la protección de una API utilizando Keycloak.
 
+## 0. Guía de Inicio Rápido
+Para poner en marcha el proyecto, ejecuta estos comandos en terminales separadas:
+
+### 1. Iniciar Keycloak (Contenedor Docker)
+```bash
+cd practica-auth
+docker compose up -d
+```
+*   **Acceso Admin:** `http://localhost:8080` (admin/admin_password)
+
+### 2. Iniciar el Backend (Node.js)
+```bash
+cd practica-auth/backend
+node server.js
+```
+*   **API Protegida:** `http://localhost:3000/api/privado`
+
+### 3. Iniciar el Frontend (Landing Page)
+```bash
+cd practica-auth
+npx serve -p 3000 frontend
+```
+*   **URL:** `http://localhost:3000`
+
+---
+
 ## 1. Configuración del Servidor y Realm
 Se inició el servidor de Keycloak utilizando Docker Compose y se creó el Realm **LaboratorioDev.** (nótese el punto al final).
 
@@ -49,5 +75,15 @@ Se verificó que la API protegida solo permitiera el acceso con un token válido
 *   **Acceso Concedido (Con Token):**
     ![Con Token](img/Postman_with_token.png)
 
+## 5. Registro de Usuarios y Landing Page (Tema Oxocarbon)
+Se habilitó el auto-registro de usuarios y se implementó una Landing Page protegida con una interfaz moderna.
+
+*   **Configuración de Registro:** Se activó "User registration" en Realm Settings.
+*   **Cliente Frontend:** Se creó el cliente `frontend-app` con acceso público y Web Origins configurado para `*`.
+*   **Interfaz Final (Landing Page):**
+    ![Landing Page](img/landing.png)
+*   **Respuesta de la API Protegida:**
+    ![API Response Modal](img/landigResponse.png)
+
 ---
-**Resultado:** Se logró implementar un flujo completo de autenticación segura, incluyendo gestión de identidad, MFA y protección de recursos en una API Node.js.
+**Resultado:** Se logró implementar un flujo completo de autenticación segura, incluyendo gestión de identidad, MFA, auto-registro y una Landing Page personalizada protegida por Keycloak.
