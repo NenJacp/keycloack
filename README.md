@@ -22,9 +22,9 @@ node server.js
 ### 3. Iniciar el Frontend (Landing Page)
 ```bash
 cd practica-auth
-npx serve -p 3000 frontend
+npx serve -p 9000 frontend
 ```
-*   **URL:** `http://localhost:3000`
+*   **URL:** `http://localhost:9000`
 
 ---
 
@@ -79,7 +79,7 @@ Se verificó que la API protegida solo permitiera el acceso con un token válido
 Se habilitó el auto-registro de usuarios y se implementó una Landing Page protegida con una interfaz moderna.
 
 *   **Configuración de Registro:** Se activó "User registration" en Realm Settings.
-*   **Cliente Frontend:** Se creó el cliente `frontend-app` con acceso público y Web Origins configurado para `*`.
+*   **Cliente Frontend:** Se creó el cliente `frontend-app` con acceso público (public access), Web Origins configurado para `*` y Root URL apuntando a `http://localhost:9000`.
 *   **Interfaz Final (Landing Page):**
     ![Landing Page](img/landing.png)
 *   **Respuesta de la API Protegida:**
